@@ -5,7 +5,6 @@ steem.config.set('address_prefix','TST');
 steem.config.set('chain_id','18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e');
 
 const active_key = '';
-const pubkey = 'TST8Vf3uwM1to43pe1omHbuLkouW8zMSooeaBSDZCbGHnf2Y4kcbS';
 const signkey = 'TST8Vf3uwM1to43pe1omHbuLkouW8zMSooeaBSDZCbGHnf2Y4kcbS';
 
 async function update_witness(account_name, signkey, active_key) {
