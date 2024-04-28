@@ -7,12 +7,26 @@ steem.config.set('chain_id','18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4c
 const account_name = 'initminer';
 const active_key = '';
 
-const new_account_name = 'ety001.test';
-const new_account_priv = '';
 const new_account_pub = 'TST8Vf3uwM1to43pe1omHbuLkouW8zMSooeaBSDZCbGHnf2Y4kcbS';
 
+const sendPromise = function(op, active_key) {
+  return new Promise((resolve, reject) => {
+    steem.broadcast.send({
+      extensions: [],
+      operations: [
+        op,
+      ]
+    }, [active_key], (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+}
 
-async function create_account(account_name, new_account_name, new_account_pub, active_key) {
+async function claim(account_name, active_key) {
   const claim_op = [
     "claim_account",
     {
@@ -21,7 +35,11 @@ async function create_account(account_name, new_account_name, new_account_pub, a
       "extensions": []
     }
   ];
+  const res = await sendPromise(claim_op, active_key);
+  console.log(res);
+}
 
+async function create_account(account_name, new_account_name, new_account_pub, active_key) {
   const create_account_op = [
     "create_claimed_account",
     {
@@ -62,40 +80,16 @@ async function create_account(account_name, new_account_name, new_account_pub, a
     }
   ];
 
-  const sendPromise = function(op, active_key) {
-    return new Promise((resolve, reject) => {
-      steem.broadcast.send({
-        extensions: [],
-        operations: [
-          op,
-        ]
-      }, [active_key], (err, res) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(res);
-        }
-      });
-    });
-  }
-
-  let res = await sendPromise(claim_op, active_key);
-  res = await sendPromise(create_account_op, active_key);
+  const res = await sendPromise(create_account_op, active_key);
   console.log(res);
 }
 
 async function main() {
-  for(let i = 1; i <= 30; i++) {
+  for(let i = 29; i <= 30; i++) {
+    await claim(account_name, active_key);
+    await claim(account_name, active_key);
     await create_account(account_name, 'test-account-' + i, new_account_pub, active_key);
   }
 }
 
 main();
-
-// steem.api.call('database_api.get_dynamic_global_properties', {}, function(err, result) {
-//   console.log(err, result);
-// });
-
-// steem.api.getDynamicGlobalProperties((err, res) => {
-//   console.log(err, res);
-// });

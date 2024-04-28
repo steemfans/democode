@@ -8,7 +8,7 @@ steem.config.set('chain_id','18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4c
 //   console.log(err, res);
 // });
 
-steem.api.getAccounts(['test-account-1', 'ety001.test', 'test-account-30'], (res, err) => {
+steem.api.getAccounts(['test-account-30'], (res, err) => {
   console.log(res, err);
 });
 
