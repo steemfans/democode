@@ -78,8 +78,8 @@ async function update_witness(account_name, signkey, active_key) {
 
 async function main() {
   Object.keys(data).forEach(async (k) => {
-    console.log(`account_name: ${k}, sign_key: ${data[k]}`);
     await update_witness(k, data[k], active_key);
+    console.log(`account_name: ${k}, sign_key: ${data[k]}`);
   });
 }
 
