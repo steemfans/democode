@@ -12,7 +12,7 @@ async function getAccountHistory(username, from, limit) {
   return steem.api.getAccountHistoryAsync(username, from, limit)
 }
 
-async function main() {
+async function desc() {
   const username = 'ety001';
   const limit = 3;
   let from = -1, page = 5;
@@ -34,4 +34,4 @@ async function main() {
   }
 }
 
-main();
+desc();
