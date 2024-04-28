@@ -40,7 +40,7 @@ async function update_witness(account_name, signkey, active_key) {
     });
   }
 
-  let err, res = await sendPromise(update_witness_op, active_key);
+  const res = await sendPromise(update_witness_op, active_key);
   console.log(res);
 }
 

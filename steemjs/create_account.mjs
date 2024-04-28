@@ -79,8 +79,8 @@ async function create_account(account_name, new_account_name, new_account_pub, a
     });
   }
 
-  let err, res = await sendPromise(claim_op, active_key);
-  err, res = await sendPromise(create_account_op, active_key);
+  let res = await sendPromise(claim_op, active_key);
+  res = await sendPromise(create_account_op, active_key);
   console.log(res);
 }
 

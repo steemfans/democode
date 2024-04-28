@@ -33,7 +33,7 @@ async function transfer_to_vesting(from, amount, active_key) {
     });
   }
 
-  let err, res = await sendPromise(transfer_to_vesting_op, active_key);
+  const res = await sendPromise(transfer_to_vesting_op, active_key);
   console.log(res);
 }
 

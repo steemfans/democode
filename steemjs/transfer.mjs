@@ -35,7 +35,7 @@ async function transfer(from, to, active_key) {
     });
   }
 
-  let err, res = await sendPromise(transfer_op, active_key);
+  const res = await sendPromise(transfer_op, active_key);
   console.log(res);
 }
 
