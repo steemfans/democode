@@ -4,7 +4,7 @@
    ```
 2. Install package
    ```
-   cd steemjs
+   cd democode/steemjs
    npm install
    ```
 3. Run testcode
